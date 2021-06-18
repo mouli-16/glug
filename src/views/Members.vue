@@ -67,70 +67,99 @@
           <li><router-link to="/">Home</router-link></li>
         </ul>
       </div>
-      <div class="hamburger">
+      <div class="hamburger" @click="toggleSlider">
         <img src="../assets/hamburger.png" alt="" />
+        <div class="slider" v-if="showSlider">
+          <ul>
+            <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+            <li>
+              <router-link :to="{ name: 'Members' }">Members</router-link>
+            </li>
+            <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
+            <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
+            <li><router-link to="/">Home</router-link></li>
+          </ul>
+        </div>
       </div>
     </div>
     <router-view />
     <div class="content">
-        <h1>MEET OUR FAMILY</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum commodi
-          possimus voluptatum! Quae tempora vero, fuga sunt hic facilis placeat?
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro
-          repudiandae recusandae maiores aliquam aspernatur sunt eaque
-          necessitatibus ad quibusdam ipsam.
-        </p>
-      </div>
+      <h1>MEET OUR FAMILY</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum commodi
+        possimus voluptatum! Quae tempora vero, fuga sunt hic facilis placeat?
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro
+        repudiandae recusandae maiores aliquam aspernatur sunt eaque
+        necessitatibus ad quibusdam ipsam.
+      </p>
+    </div>
     <div class="col">
-    <div class="fourth">
-       <h1>Final YEAR</h1>
-       <div class="team" v-for="member in members" :key="member">
-         <div v-if="member.year_name === 4 ? true: false ">
-       <div class="circle">
-         <img :src="member.image" alt="">
-       </div>
-       <div class="box">
-         <h3>{{member.first_name}} {{member.last_name}} </h3>
-         <a :href="member.facebook_link"  target="_blank"><img src="../assets/fb3.png" alt=""></a>
-         <a :href="member.linkedin_link" target="_blank"><img src="../assets/lim3.png" alt=""></a>
-         <a :href="member.github_link" target="_blank"><img src="../assets/gitm1.png" alt=""></a>
+      <div class="fourth">
+        <h1>Final YEAR</h1>
+        <div class="team" v-for="member in members" :key="member">
+          <div v-if="member.year_name === 4 ? true : false">
+            <div class="circle">
+              <img :src="member.image" alt="" />
+            </div>
+            <div class="box">
+              <h3>{{ member.first_name }} {{ member.last_name }}</h3>
+              <a :href="member.facebook_link" target="_blank"
+                ><img src="../assets/fb3.png" alt=""
+              /></a>
+              <a :href="member.linkedin_link" target="_blank"
+                ><img src="../assets/lim3.png" alt=""
+              /></a>
+              <a :href="member.github_link" target="_blank"
+                ><img src="../assets/gitm1.png" alt=""
+              /></a>
+            </div>
+          </div>
+        </div>
       </div>
-         </div>
-       </div>
-    </div>
-    <div class="third">
-       <h1>third YEAR</h1>
-       <div class="team" v-for="member in members" :key="member">
-         <div v-if="member.year_name === 3 ? true: false ">
-       <div class="circle">
-         <img :src="member.image" alt="">
-       </div>
-       <div class="box">
-         <h3>{{member.first_name}} {{member.last_name}} </h3>
-         <a :href="member.facebook_link" target="_blank"><img src="../assets/fb3.png" alt=""></a>
-         <a :href="member.linkedin_link" target="_blank"><img src="../assets/lim3.png" alt=""></a>
-         <a :href="member.github_link" target="_blank"><img src="../assets/gitm1.png" alt=""></a>
+      <div class="third">
+        <h1>third YEAR</h1>
+        <div class="team" v-for="member in members" :key="member">
+          <div v-if="member.year_name === 3 ? true : false">
+            <div class="circle">
+              <img :src="member.image" alt="" />
+            </div>
+            <div class="box">
+              <h3>{{ member.first_name }} {{ member.last_name }}</h3>
+              <a :href="member.facebook_link" target="_blank"
+                ><img src="../assets/fb3.png" alt=""
+              /></a>
+              <a :href="member.linkedin_link" target="_blank"
+                ><img src="../assets/lim3.png" alt=""
+              /></a>
+              <a :href="member.github_link" target="_blank"
+                ><img src="../assets/gitm1.png" alt=""
+              /></a>
+            </div>
+          </div>
+        </div>
       </div>
-         </div>
-       </div>
-    </div>
-    <div class="second">
-       <h1>second YEAR</h1>
-       <div class="team" v-for="member in members" :key="member">
-         <div v-if="member.year_name === 2 ? true: false ">
-       <div class="circle">
-         <img :src="member.image" alt="">
-       </div>
-       <div class="box">
-         <h3>{{member.first_name}} {{member.last_name}} </h3>
-         <a :href="member.facebook_link" target="_blank"><img src="../assets/fb3.png" alt=""></a>
-         <a :href="member.linkedin_link" target="_blank"><img src="../assets/lim3.png" alt=""></a>
-         <a :href="member.github_link" target="_blank"><img src="../assets/gitm1.png" alt=""></a>
+      <div class="second">
+        <h1>second YEAR</h1>
+        <div class="team" v-for="member in members" :key="member">
+          <div v-if="member.year_name === 2 ? true : false">
+            <div class="circle">
+              <img :src="member.image" alt="" />
+            </div>
+            <div class="box">
+              <h3>{{ member.first_name }} {{ member.last_name }}</h3>
+              <a :href="member.facebook_link" target="_blank"
+                ><img src="../assets/fb3.png" alt=""
+              /></a>
+              <a :href="member.linkedin_link" target="_blank"
+                ><img src="../assets/lim3.png" alt=""
+              /></a>
+              <a :href="member.github_link" target="_blank"
+                ><img src="../assets/gitm1.png" alt=""
+              /></a>
+            </div>
+          </div>
+        </div>
       </div>
-         </div>
-       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -140,7 +169,13 @@ export default {
   data() {
     return {
       members: [],
+      showSlider: false,
     };
+  },
+  methods: {
+    toggleSlider() {
+      this.showSlider = !this.showSlider;
+    },
   },
   mounted() {
     fetch(process.env.VUE_APP_PROFILES)
@@ -219,6 +254,26 @@ export default {
 }
 .hamburger:hover {
   cursor: pointer;
+}
+.slider {
+  color: #000;
+  text-align: center;
+  /* border: 2px solid red; */
+  width: 100px;
+  float: right;
+  animation: slide linear 3s 1;
+}
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.slider li {
+  font-size: 0.8em;
+  margin: 10px;
 }
 .content {
   float: left;

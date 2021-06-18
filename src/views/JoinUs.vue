@@ -73,8 +73,19 @@
           <li><router-link to="/">Home</router-link></li>
         </ul>
       </div>
-      <div class="hamburger">
+      <div class="hamburger" @click="toggleSlider">
         <img src="../assets/hamburger.png" alt="" />
+        <div class="slider" v-if="showSlider">
+          <ul>
+            <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+            <li>
+              <router-link :to="{ name: 'Members' }">Members</router-link>
+            </li>
+            <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
+            <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
+            <li><router-link to="/">Home</router-link></li>
+          </ul>
+        </div>
       </div>
     </div>
     <router-view />
@@ -197,6 +208,26 @@ template{
 .hamburger:hover {
   cursor: pointer;
 }
+.slider {
+  color: #000;
+  text-align: center;
+  /* border: 2px solid red; */
+  width: 100px;
+  float: right;
+  animation: slide linear 3s 1;
+}
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.slider li {
+  font-size: 0.8em;
+  margin: 10px;
+}
 form{
     max-width: 550px;
     margin: 30px auto;
@@ -304,7 +335,8 @@ export default {
             roles:[],
             pl:'yes',
             listSkill:'',
-            skills: []
+            skills: [],
+            showSlider: false,
 
 
         }
@@ -331,7 +363,10 @@ export default {
                 console.log('branch:',this.branch)
                 console.log('skills:',this.skills)
                 console.log('roles:',this.roles)
-            }
+            },
+    toggleSlider() {
+      this.showSlider = !this.showSlider;
+    },
     }
 }
 </script>
