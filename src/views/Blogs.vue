@@ -77,7 +77,7 @@
         <img src="../assets/hamburger.png" alt="" />
         <div class="slider" v-if="showSlider">
           <ul>
-            <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+            <li  ><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
             <li>
               <router-link :to="{ name: 'Members' }">Members</router-link>
             </li>
@@ -186,14 +186,13 @@
   stroke: #1a001a00;
   stroke-width: 0;
 }
-.hamburger img {
+/* .hamburger img {
   display: none;
-}
+} */
 .hamburger:hover {
   cursor: pointer;
 }
 .slider {
-  color: #000;
   text-align: center;
   /* border: 2px solid red; */
   width: 100px;
@@ -211,6 +210,11 @@
 .slider li {
   font-size: 0.8em;
   margin: 10px;
+}
+.slider a{
+  color: #000;
+}
+.text{
   color: #000;
 }
 .container {
