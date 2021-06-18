@@ -64,15 +64,21 @@
         <div id="GNU">GNU</div>
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
-      <ul>
-        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
-        <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
-        <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
-        <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
-        <li><router-link to="/">Home</router-link></li>
-      </ul>
+      <div class="routes">
+        <ul>
+          <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+          <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
+          <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
+          <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
+          <li><router-link to="/">Home</router-link></li>
+        </ul>
+      </div>
+      <div class="hamburger">
+        <img src="../assets/hamburger.png" alt="" />
+      </div>
     </div>
     <router-view />
+    <div class="col">
     <form >
         <label>Name:</label>
         <input type="text" required v-model="name">
@@ -116,7 +122,7 @@
             <button>SUBMIT</button>
         </div>
     </form>
-
+</div>
  </div>
 </template>
 
@@ -185,6 +191,12 @@ template{
   stroke: #1a001a00;
   stroke-width: 0;
 }
+.hamburger img {
+  display: none;
+}
+.hamburger:hover {
+  cursor: pointer;
+}
 form{
     max-width: 550px;
     margin: 30px auto;
@@ -246,6 +258,39 @@ button:hover{
 }
 .submit{
     text-align: center;
+}
+@media only screen and (max-width: 607px) {
+  #GNU {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+  }
+  #Lug {
+    font-size: 12px;
+    position: relative;
+    top: 20px;
+  }
+  .col {
+    position: relative;
+    bottom: 350px;
+    margin: auto;
+    width: 300px;
+  }
+  .contact {
+    position: relative;
+    right: 20px;
+  }
+  .routes {
+    display: none;
+  }
+  .hamburger img {
+    display: block;
+    position: relative;
+    float: right;
+    bottom: 30px;
+    height: 50px;
+    width: 50px;
+  }
 }
 </style>
 <script>

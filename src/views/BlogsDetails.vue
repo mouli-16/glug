@@ -63,30 +63,36 @@
         <div id="GNU">GNU</div>
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
-      <ul>
-        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
-        <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
-        <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
-        <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
-        <li><router-link to="/">Home</router-link></li>
-      </ul>
+      <div class="routes">
+        <ul>
+          <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+          <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
+          <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
+          <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
+          <li><router-link to="/">Home</router-link></li>
+        </ul>
+      </div>
+      <div class="hamburger">
+        <img src="../assets/hamburger.png" alt="" />
+      </div>
     </div>
     <router-view />
     <div class="container">
       <div class="inner_container">
-      <div v-if="blog">
-        <div class="centre">
-        <h1>{{ blog.title }}</h1>
-        <img :src="blog.thumbnail_image" alt="" />
+        <div v-if="blog">
+          <div class="centre">
+            <h1>{{ blog.title }}</h1>
+            <img :src="blog.thumbnail_image" alt="" />
+          </div>
+          <div class="details" v-html="blog.content_body"></div>
+          <div class="btn" @click="back">
+            <h6>CLOSE</h6>
+            <div class="border"></div>
+          </div>
         </div>
-        <div class="details" v-html="blog.content_body"></div>
-        <div class="btn" @click="back"><h6>CLOSE</h6> 
-                <div class="border"></div>
-              </div>
-      </div>
-      <div v-else>
-        <div class="preloader"></div>
-      </div>
+        <div v-else>
+          <div class="preloader"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -176,6 +182,12 @@ export default {
   stroke: #1a001a00;
   stroke-width: 0;
 }
+.hamburger img {
+  display: none;
+}
+.hamburger:hover {
+  cursor: pointer;
+}
 .container {
   margin: auto;
   width: 800px;
@@ -260,29 +272,84 @@ export default {
 .preloader:after {
   content: "";
   position: absolute;
-  top:0;
-  left:0;
-  margin:-8px 0 0 -8px;
-  width:16px;
-  height:16px;
-  background:#3FB8AF;
-  animation:
-    da1-1 2s  infinite,
-    da1-2 .5s infinite;
+  top: 0;
+  left: 0;
+  margin: -8px 0 0 -8px;
+  width: 16px;
+  height: 16px;
+  background: #3fb8af;
+  animation: da1-1 2s infinite, da1-2 0.5s infinite;
 }
 .preloader:after {
-  background:#FF3D7F;
-  animation-delay: -1s,0s;
+  background: #ff3d7f;
+  animation-delay: -1s, 0s;
 }
 
 @keyframes da1-1 {
-  0%   {top:0   ;left:0}
-  25%  {top:100%;left:0}
-  50%  {top:100%;left:100%}
-  75%  {top:0   ;left:100%}
-  100% {top:0   ;left:0}
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 100%;
+    left: 0;
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+  }
+  75% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
 }
 @keyframes da1-2 {
-   80%,100% {transform: rotate(0.5turn)}
+  80%,
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
+@media only screen and (max-width: 607px) {
+  .container {
+    position: relative;
+    top: 100px;
+    width: 300px;
+  }
+  .container h1 {
+    font-size: 1.8em;
+  }
+  #GNU {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+  }
+  #Lug {
+    font-size: 12px;
+    position: relative;
+    top: 20px;
+  }
+  .col {
+    position: relative;
+    bottom: 350px;
+  }
+  .contact {
+    position: relative;
+    right: 20px;
+  }
+  .routes {
+    display: none;
+  }
+  .hamburger img {
+    display: block;
+    position: relative;
+    float: right;
+    bottom: 30px;
+    height: 50px;
+    width: 50px;
+  }
 }
 </style>

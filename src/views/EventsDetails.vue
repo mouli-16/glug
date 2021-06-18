@@ -65,13 +65,18 @@
         <div id="GNU">GNU</div>
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
-      <ul>
-        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
-        <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
-        <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
-        <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
-        <li><router-link to="/">Home</router-link></li>
-      </ul>
+      <div class="routes">
+        <ul>
+          <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+          <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
+          <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
+          <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
+          <li><router-link to="/">Home</router-link></li>
+        </ul>
+      </div>
+      <div class="hamburger">
+        <img src="../assets/hamburger.png" alt="" />
+      </div>
     </div>
     <router-view />
     <div class="container">
@@ -183,6 +188,12 @@ export default {
   stroke: #1a001a00;
   stroke-width: 0;
 }
+.hamburger img {
+  display: none;
+}
+.hamburger:hover {
+  cursor: pointer;
+}
 .container {
   margin: auto;
   width: 900px;
@@ -293,5 +304,49 @@ export default {
 }
 @keyframes da1-2 {
    80%,100% {transform: rotate(0.5turn)}
+}
+@media only screen and (max-width: 607px) {
+  .container {
+    position: relative;
+    top: 100px;
+    width: 250px;
+  }
+  .container h1 {
+    font-size: 1em;
+    position: relative;
+    left: 10px;
+  }
+  .container img{
+    width: 220px;
+  }
+  #GNU {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+  }
+  #Lug {
+    font-size: 12px;
+    position: relative;
+    top: 20px;
+  }
+  .col {
+    position: relative;
+    bottom: 350px;
+  }
+  .contact {
+    position: relative;
+    right: 20px;
+  }
+  .routes {
+    display: none;
+  }
+  .hamburger img {
+    display: block;
+    position: relative;
+    float: right;
+    bottom: 30px;
+    height: 50px;
+    width: 50px;
+  }
 }
 </style>

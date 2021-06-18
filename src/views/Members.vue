@@ -58,13 +58,18 @@
         <div id="GNU">GNU</div>
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
-      <ul>
-        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
-        <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
-        <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
-        <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
-        <li><router-link to="/">Home</router-link></li>
-      </ul>
+      <div class="routes">
+        <ul>
+          <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+          <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
+          <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
+          <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
+          <li><router-link to="/">Home</router-link></li>
+        </ul>
+      </div>
+      <div class="hamburger">
+        <img src="../assets/hamburger.png" alt="" />
+      </div>
     </div>
     <router-view />
     <div class="content">
@@ -77,6 +82,7 @@
           necessitatibus ad quibusdam ipsam.
         </p>
       </div>
+    <div class="col">
     <div class="fourth">
        <h1>Final YEAR</h1>
        <div class="team" v-for="member in members" :key="member">
@@ -125,6 +131,7 @@
          </div>
        </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -140,10 +147,8 @@ export default {
       .then((res) => res.json())
       .then((data) => (this.members = data))
       .catch((err) => console.log(err.message));
-    
   },
 };
-
 </script>
 
  
@@ -209,6 +214,12 @@ export default {
   stroke: #1a001a00;
   stroke-width: 0;
 }
+.hamburger img {
+  display: none;
+}
+.hamburger:hover {
+  cursor: pointer;
+}
 .content {
   float: left;
   /* border: 2px solid red; */
@@ -234,7 +245,7 @@ export default {
   font-family: "Mate SC", serif;
   font-family: "Roboto", sans-serif;
 }
-.fourth{
+.fourth {
   float: right;
   /* border: 2px solid red; */
   width: 100%;
@@ -242,7 +253,7 @@ export default {
   top: 600px;
   font-family: "Roboto", sans-serif;
 }
-.third{
+.third {
   float: right;
   /* border: 2px solid red; */
   width: 100%;
@@ -250,7 +261,7 @@ export default {
   top: 800px;
   font-family: "Roboto", sans-serif;
 }
-.second{
+.second {
   float: right;
   /* border: 2px solid red; */
   width: 100%;
@@ -258,31 +269,31 @@ export default {
   top: 1000px;
   font-family: "Roboto", sans-serif;
 }
-.fourth h1{
+.fourth h1 {
   font-size: 2em;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 10px;
   line-height: 55px;
 }
-.third h1{
+.third h1 {
   font-size: 2em;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 10px;
   line-height: 55px;
 }
-.second h1{
+.second h1 {
   font-size: 2em;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 10px;
   line-height: 55px;
 }
-.team{
+.team {
   display: inline-block;
 }
-.circle{
+.circle {
   position: relative;
   top: 50px;
   left: 60px;
@@ -293,33 +304,79 @@ export default {
   z-index: 999;
   border-radius: 50%;
 }
-.circle img{
+.circle img {
   height: 100px;
   width: 100px;
   z-index: 999;
   border-radius: 50%;
 }
-.box{
+.box {
   height: 150px;
-  font-size: .8em;
+  font-size: 0.8em;
   margin: 10px;
   width: 200px;
   /* border: 2px solid black; */
   background-color: rgba(128, 128, 128, 0.123);
 }
-.box h3{
+.box h3 {
   position: relative;
   top: 50px;
 }
-.box img{
+.box img {
   position: relative;
   top: 50px;
   margin: 5px;
   height: 20px;
-  width: 20px
+  width: 20px;
 }
-.box img:hover{
+.box img:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+@media only screen and (max-width: 607px) {
+  .content {
+    position: relative;
+    top: 10px;
+    width: 350px;
+    left: 10px;
+    padding: 10px;
+  }
+  .content h1 {
+    font-size: 1.4em;
+  }
+  .content p {
+    font-size: 0.9em;
+  }
+  #GNU {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+  }
+  #Lug {
+    font-size: 12px;
+    position: relative;
+    top: 20px;
+  }
+  .col {
+    position: relative;
+    bottom: 550px;
+    margin: auto;
+    width: 300px;
+  }
+  .contact {
+    position: relative;
+    right: 20px;
+  }
+  .routes {
+    display: none;
+  }
+  .hamburger img {
+    display: block;
+    position: relative;
+    float: right;
+    bottom: 30px;
+    height: 50px;
+    width: 50px;
+  }
 }
 </style>

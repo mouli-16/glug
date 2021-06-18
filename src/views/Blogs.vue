@@ -64,13 +64,18 @@
         <div id="GNU">GNU</div>
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
-      <ul>
-        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
-        <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
-        <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
-        <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
-        <li><router-link to="/">Home</router-link></li>
-      </ul>
+      <div class="routes">
+        <ul>
+          <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+          <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
+          <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
+          <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
+          <li><router-link to="/">Home</router-link></li>
+        </ul>
+      </div>
+      <div class="hamburger">
+        <img src="../assets/hamburger.png" alt="" />
+      </div>
     </div>
     <router-view />
     <div class="container">
@@ -83,27 +88,26 @@
           </div>
         </div>
         <div class="symbols">
-          <a href=""><img  src="../assets/like.png" alt="" /> </a>
+          <a href=""><img src="../assets/like.png" alt="" /> </a>
           <a href=""><img src="../assets/share.png" alt="" /> </a>
           <a href=""><img src="../assets/comment.png" alt="" /> </a>
         </div>
         <div class="card_info">
           <div class="card_head">
-            <h3>{{blog.title}} </h3>
-            <h5>{{blog.author_name}} </h5>
-            <hr>
+            <h3>{{ blog.title }}</h3>
+            <h5>{{ blog.author_name }}</h5>
+            <hr />
           </div>
           <div class="card_details">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, qui.
           </div>
         </div>
-         <router-link
-              :to="{ name: 'BlogsDetails', params: { id: blog.id } }"
-            >
-              <div class="btn"><h6>Read More</h6> 
-                <div class="border"></div>
-              </div>
-            </router-link>
+        <router-link :to="{ name: 'BlogsDetails', params: { id: blog.id } }">
+          <div class="btn">
+            <h6>Read More</h6>
+            <div class="border"></div>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -171,10 +175,15 @@
   stroke: #1a001a00;
   stroke-width: 0;
 }
+.hamburger img {
+  display: none;
+}
+.hamburger:hover {
+  cursor: pointer;
+}
 .container {
   position: relative;
   top: 500px;
-  
 }
 .card {
   background-color: rgba(128, 128, 128, 0.425);
@@ -196,12 +205,12 @@
   right: 160px;
   font-size: 1.8em;
 }
-.date_box .date{
+.date_box .date {
   font-size: 2em;
 }
-.date_box .month{
+.date_box .month {
   font-family: "Roboto", sans-serif;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 10px;
@@ -215,7 +224,7 @@
   bottom: 35px;
 }
 
-.card_info{
+.card_info {
   position: relative;
   bottom: 370px;
   left: 350px;
@@ -225,27 +234,26 @@
   padding-top: 25px;
   /* border: 2px solid red; */
 }
-.more img{
+.more img {
   height: 50px;
   width: 50px;
-   
 }
-.card_head h5{
+.card_head h5 {
   position: relative;
   bottom: 10px;
   color: #ffd40d;
 }
-.card h3{
+.card h3 {
   font-size: 20px;
   font-family: "Mate SC", serif;
   text-transform: uppercase;
 }
-.card hr{
+.card hr {
   color: black;
   position: relative;
   bottom: 20px;
 }
-.card_details{
+.card_details {
   position: relative;
   bottom: 20px;
 }
@@ -263,7 +271,7 @@
   bottom: 330px;
   left: 200px;
 }
-.btn h6{
+.btn h6 {
   position: relative;
   bottom: 15px;
   left: 10px;
@@ -288,7 +296,84 @@
   vertical-align: bottom;
   clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
 }
+@media only screen and (max-width: 607px) {
+  #GNU {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+  }
+  #Lug {
+    font-size: 12px;
+    position: relative;
+    top: 20px;
+  }
+  .container {
+    position: relative;
+    top: 100px;
+  }
+  .card {
+    width: 300px;
+    height: 250px;
+  }
+  .card img {
+    width: 150px;
+    position: relative;
+    bottom: 20px;
+    right: 60px;
+  }
+  .date_box {
+    position: relative;
+    right: 90px;
+    bottom: 10px;
+    font-size: 0.7em;
+  }
+  .date_box .date {
+    font-size: 3.1em;
+  }
+  .symbols img {
+    height: 10px;
+    width: 10px;
+    position: relative;
+    margin: 12px;
+    left: 50px;
+  }
 
+  .card_info {
+    position: relative;
+    bottom: 330px;
+    left: 160px;
+    width: 120px;
+  }
+  .more img {
+    height: 10px;
+    width: 10px;
+  }
+  .card h3 {
+    font-size: 0.9em;
+  }
+  .card_details {
+    font-size: 0.7em;
+  }
+  .btn{
+    position: relative;
+    left: 70px;
+  }
+  .contact {
+    position: relative;
+    right: 20px;
+  }
+  .routes {
+    display: none;
+  }
+  .hamburger img {
+    display: block;
+    position: relative;
+    float: right;
+    bottom: 30px;
+    height: 50px;
+    width: 50px;
+  }
+}
 </style>
 
 <script>

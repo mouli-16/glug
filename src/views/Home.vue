@@ -58,13 +58,18 @@
         <div id="GNU">GNU</div>
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
-      <ul>
-        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
-        <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
-        <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
-        <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
-        <li><router-link to="/">Home</router-link></li>
-      </ul>
+      <div class="routes">
+        <ul>
+          <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
+          <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
+          <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
+          <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
+          <li><router-link to="/">Home</router-link></li>
+        </ul>
+      </div>
+      <div class="hamburger">
+        <img src="../assets/hamburger.png" alt="" />
+      </div>
     </div>
     <router-view />
     <!-- <div v-if="showDetails"> -->
@@ -97,40 +102,53 @@
         ><img id="git" src="../assets/git.png" alt="" srcset=""
       /></a>
     </div>
-    <div class="cards" v-for="card in cards" :key="card">
-      <div class="card">
-        <img :src="card.image" alt="">
-        {{card.heading}}
+    <div class="col">
+      <div class="cards" v-for="card in cards" :key="card">
+        <div class="card">
+          <img :src="card.image" alt="" />
+          {{ card.heading }}
+        </div>
+      </div>
+      <div class="quote">
+        <p>
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
+          expedita!" <br />~Lorem
+        </p>
+      </div>
+      <div class="footer">
+        <div class="contact">
+          <img src="../assets/tel.png" alt="" />
+          <h4>+91-9674345229</h4>
+          <img src="../assets/email.png" alt="" />
+          <h4>sikoerhbgi@gmail.com</h4>
+          <img src="../assets/locate.png" alt="" />
+          <h4>Durgapur WestBengal,743721</h4>
+        </div>
+        <hr />
+        <div class="copyright">&copy; Glug NIT Durgapur</div>
+        <div class="links">
+          <a
+            href="https://www.linkedin.com/company/lugnitdgp/mycompany/"
+            target="_blank"
+            ><img src="../assets/lim3.png" alt=""
+          /></a>
+          <a href="https://github.com/lugnitdgp" target="_blank"
+            ><img src="../assets/gitm1.png" alt=""
+          /></a>
+          <a href="https://www.instagram.com/nitdgplug/" target="_blank"
+            ><img src="../assets/insf.png" alt=""
+          /></a>
+          <a href="https://www.facebook.com/nitdgplug" target="_blank"
+            ><img src="../assets/io.png" alt=""
+          /></a>
+          <a
+            href="https://www.youtube.com/channel/UCYZPnN5vP5B1sINLLkI1aDA"
+            target="_blank"
+            ><img src="../assets/yt.png" alt=""
+          /></a>
+        </div>
       </div>
     </div>
-    <div class="quote">
-      <p> "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, expedita!" 
-      <br>~Lorem
-    </p>
-    </div>
-    <div class="footer">
-      <div class="contact">
-        <img src="../assets/tel.png" alt="">
-        <h4>+91-9674345229</h4>
-        <img src="../assets/email.png" alt="">
-        <h4>sikoerhbgi@gmail.com</h4>
-        <img src="../assets/locate.png" alt="">
-        <h4>Durgapur WestBengal,743721</h4>
-      </div>
-      <hr>
-      <div class="copyright">
-        &copy; Glug NIT Durgapur
-      </div>
-      <div class="links">
-        <a href="https://www.linkedin.com/company/lugnitdgp/mycompany/" target="_blank"><img src="../assets/lim3.png" alt=""></a>
-        <a href="https://github.com/lugnitdgp" target="_blank"><img src="../assets/gitm1.png" alt=""></a>
-        <a href="https://www.instagram.com/nitdgplug/" target="_blank"><img src="../assets/insf.png" alt=""></a>
-        <a href="https://www.facebook.com/nitdgplug" target="_blank"><img src="../assets/io.png" alt=""></a>
-        <a href="https://www.youtube.com/channel/UCYZPnN5vP5B1sINLLkI1aDA" target="_blank"><img src="../assets/yt.png" alt=""></a>
-      </div>
-      
-    </div>
-    
   </div>
 </template>
 
@@ -171,10 +189,10 @@ export default {
   },
   mounted() {
     setInterval(this.changeId, 5000);
-    fetch('https://api.nitdgplug.org/api/carousel/')
-        .then(res => res.json())
-        .then(data => this.cards = data)
-        .catch(err => console.log(err.message))
+    fetch("https://api.nitdgplug.org/api/carousel/")
+      .then((res) => res.json())
+      .then((data) => (this.cards = data))
+      .catch((err) => console.log(err.message));
   },
 };
 </script>
@@ -248,8 +266,8 @@ export default {
 .content p {
   text-align: left;
   line-height: 20px;
-  font-family: 'Mate SC', serif;
-font-family: 'Roboto', sans-serif;
+  font-family: "Mate SC", serif;
+  font-family: "Roboto", sans-serif;
 }
 .ani {
   position: relative;
@@ -312,14 +330,20 @@ font-family: 'Roboto', sans-serif;
   stroke: #1a001a00;
   stroke-width: 0;
 }
-.cards{
-display: inline-block;
+.hamburger img {
+  display: none;
 }
-.card{
+.hamburger:hover {
+  cursor: pointer;
+}
+.cards {
+  display: inline-block;
+}
+.card {
   position: relative;
   top: 400px;
   width: 200px;
-  height:300px;
+  height: 300px;
   margin: 30px;
   /* border: 2px solid red; */
   border-radius: 10px;
@@ -327,65 +351,114 @@ display: inline-block;
   font-size: 18px;
   box-shadow: 10px 10px 10px 0px grey;
   font-family: "Roboto", sans-serif;
-  
-
 }
-.card img{
- height: 200px;
- width: 200px;
+.card img {
+  height: 200px;
+  width: 200px;
 }
-.quote{
+.quote {
   position: relative;
   top: 450px;
 }
-.footer{
+.footer {
   padding: 15px;
   position: relative;
   top: 500px;
   height: 180px;
   background-color: rgba(0, 0, 0, 0.514);
 }
-.contact{
+.contact {
   text-align: left;
 }
 
-.contact h4{
+.contact h4 {
   position: relative;
   /* top: 590px; */
   /* display: block; */
   bottom: 10px;
   left: 130px;
   margin: 2px;
- color: white;
- font-family: 'Mate SC', serif;
-font-family: 'Roboto', sans-serif;
+  color: white;
+  font-family: "Mate SC", serif;
+  font-family: "Roboto", sans-serif;
 }
-.contact img{
+.contact img {
   position: relative;
   top: 15px;
   display: block;
   left: 60px;
   margin: -20px;
   height: 60px;
- width: 60px;
+  width: 60px;
 }
-.copyright{
+.copyright {
   float: left;
   color: white;
   padding: 2px;
 }
-.links{
+.links {
   float: right;
 }
-.links img{
+.links img {
   margin: 5px;
   height: 20px;
-  width: 20px
+  width: 20px;
 }
-.links img:hover{
+.links img:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
-
+@media only screen and (max-width: 607px) {
+  .content {
+    position: relative;
+    top: 10px;
+    left: 30px;
+    width: 300px;
+  }
+  .content h1 {
+    font-size: 1.2em;
+  }
+  .content p {
+    font-size: 0.8em;
+  }
+  #GNU {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+  }
+  #Lug {
+    font-size: 12px;
+    position: relative;
+    top: 20px;
+  }
+  .ani {
+    position: relative;
+    top: 30px;
+    left: 20px;
+  }
+  .col {
+    position: relative;
+    bottom: 350px;
+  }
+  .social {
+    position: relative;
+    bottom: 330px;
+    left: 15px;
+  }
+  .contact {
+    position: relative;
+    right: 20px;
+  }
+  .routes {
+    display: none;
+  }
+  .hamburger img {
+    display: block;
+    position: relative;
+    float: right;
+    bottom: 30px;
+    height: 50px;
+    width: 50px;
+  }
 }
 </style>
