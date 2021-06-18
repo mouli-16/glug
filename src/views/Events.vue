@@ -89,7 +89,7 @@
 
         <div class="card-head">
           <span class="date-box">
-            <span class="date-day">11</span>
+            <span class="date-day">11 </span>
             <span class="date-month">JAN</span>
           </span>
         </div>
@@ -321,6 +321,7 @@
   vertical-align: bottom;
   clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
 }
+
 </style>
 
 <script>
@@ -335,6 +336,7 @@ export default {
       .then((res) => res.json())
       .then((data) => (this.events = data))
       .catch((err) => console.log(err.message));
+
   },
 };
 </script>

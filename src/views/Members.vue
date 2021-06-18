@@ -86,9 +86,9 @@
        </div>
        <div class="box">
          <h3>{{member.first_name}} {{member.last_name}} </h3>
-         <a :href="member.facebook_link"><img src="../assets/fb3.png" alt=""></a>
-         <a :href="member.linkedin_link"><img src="../assets/lim3.png" alt=""></a>
-         <a :href="member.github_link"><img src="../assets/gitm1.png" alt=""></a>
+         <a :href="member.facebook_link"  target="_blank"><img src="../assets/fb3.png" alt=""></a>
+         <a :href="member.linkedin_link" target="_blank"><img src="../assets/lim3.png" alt=""></a>
+         <a :href="member.github_link" target="_blank"><img src="../assets/gitm1.png" alt=""></a>
       </div>
          </div>
        </div>
@@ -102,9 +102,9 @@
        </div>
        <div class="box">
          <h3>{{member.first_name}} {{member.last_name}} </h3>
-         <a :href="member.facebook_link"><img src="../assets/fb3.png" alt=""></a>
-         <a :href="member.linkedin_link"><img src="../assets/lim3.png" alt=""></a>
-         <a :href="member.github_link"><img src="../assets/gitm1.png" alt=""></a>
+         <a :href="member.facebook_link" target="_blank"><img src="../assets/fb3.png" alt=""></a>
+         <a :href="member.linkedin_link" target="_blank"><img src="../assets/lim3.png" alt=""></a>
+         <a :href="member.github_link" target="_blank"><img src="../assets/gitm1.png" alt=""></a>
       </div>
          </div>
        </div>
@@ -118,9 +118,9 @@
        </div>
        <div class="box">
          <h3>{{member.first_name}} {{member.last_name}} </h3>
-         <a :href="member.facebook_link"><img src="../assets/fb3.png" alt=""></a>
-         <a :href="member.linkedin_link"><img src="../assets/lim3.png" alt=""></a>
-         <a :href="member.github_link"><img src="../assets/gitm1.png" alt=""></a>
+         <a :href="member.facebook_link" target="_blank"><img src="../assets/fb3.png" alt=""></a>
+         <a :href="member.linkedin_link" target="_blank"><img src="../assets/lim3.png" alt=""></a>
+         <a :href="member.github_link" target="_blank"><img src="../assets/gitm1.png" alt=""></a>
       </div>
          </div>
        </div>

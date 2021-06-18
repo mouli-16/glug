@@ -73,10 +73,57 @@
       </ul>
     </div>
     <router-view />
+    <form >
+        <label>Name:</label>
+        <input type="text" required v-model="name">
+        <label>Roll No:</label>
+        <input type="text" required v-model="roll">
+        <label>Email:</label>
+        <input type="email" required v-model="email">
+        <label>Branch:</label>
+        <input type="text" required v-model="branch">
+            <label>Audition For:</label>
+        <div>
+            <input type="checkbox" value="webD" v-model="roles">
+            <label>WEB DEVELOPER</label>
+        </div>
+        <div>
+
+            <input type="checkbox" value="AppD" v-model="roles">
+            <label>APP DEVELOPER</label>
+        </div>
+        <div>
+
+            <input type="checkbox" value="content writer" v-model="roles">
+            <label>CONTENT WRITER</label>
+        </div>
+        <div>
+
+            <input type="checkbox" value="gd" v-model="roles">
+            <label>GRAPHIC DESIGNER</label>
+        </div>
+        <label>KNOW ANY PROGRAMMING LANGUAGE</label>
+        <select v-model="pl">
+            <option value="yes">YES</option>
+            <option value="no">NO</option>
+        </select>
+        <label >SKILLS:</label>
+        <input type="text" v-model="listSkill" @keyup="addSkill">
+        <div v-for="skill in skills" :key="skill" class="skill">
+           <span @click="deleteSkill(skill)">{{skill}}</span> 
+        </div>
+        <div class="submit">
+            <button>SUBMIT</button>
+        </div>
+    </form>
+
  </div>
 </template>
 
 <style scoped>
+template{
+    padding: 10px;
+}
 .navbar {
   position: relative;
   color: white;
@@ -138,4 +185,108 @@
   stroke: #1a001a00;
   stroke-width: 0;
 }
+form{
+    max-width: 550px;
+    margin: 30px auto;
+    background-color: rgba(128, 128, 128, 0.26);
+    text-align: left;
+    padding: 40px;
+    border-radius: 10px;
+    position: relative;
+    top: 400px;
+    /* border: 4px solid black; */
+}
+label{
+    color: rgb(117, 112, 112);
+    display: inline-block;
+    margin: 25px 0 15px;
+    font-size: 0.6em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+input,select{
+    display: block;
+    padding: 10px 6px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+input[type="checkbox"]{
+    display: inline-block;
+    width: 16px;
+    margin: 0 10px 0 0;
+    position: relative;
+    top: 2px;
+}
+.skill{
+    display: inline-block;
+    margin: 20px 10px 0 0;
+    padding: 6px 12px;
+    background-color: honeydew;
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #777;
+    cursor: pointer;
+}
+button{
+    background-color: whitesmoke;
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.submit{
+    text-align: center;
+}
 </style>
+<script>
+export default {
+    data() {
+        return {
+            name:'',
+            roll:'',
+            email:'',
+            branch:'',
+            roles:[],
+            pl:'yes',
+            listSkill:'',
+            skills: []
+
+
+        }
+},
+        methods: {
+            addSkill(e) {
+                console.log(e)
+                if(e.key === "," && this.listSkill){
+                    if(!this.skills.includes(this.listSkill)){
+                        this.skills.push(this.listSkill)
+                    }
+                    this.listSkill = ''
+                }
+            },
+            deleteSkill(skill) {
+                this.skills = this.skills.filter((item) => {
+                    return skill !==item
+                })
+            },
+            handleSubmit() {
+                console.log('name:',this.name)
+                console.log('roll no:',this.roll)
+                console.log('email:',this.email)
+                console.log('branch:',this.branch)
+                console.log('skills:',this.skills)
+                console.log('roles:',this.roles)
+            }
+    }
+}
+</script>

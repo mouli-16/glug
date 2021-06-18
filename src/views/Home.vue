@@ -386,4 +386,6 @@ font-family: 'Roboto', sans-serif;
   transform: scale(1.1);
   cursor: pointer;
 }
+
+}
 </style>

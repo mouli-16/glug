@@ -64,7 +64,7 @@
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
       <ul>
-        <li><router-link :to="{ name: 'Youtube' }">Youtube</router-link></li>
+        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
         <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
         <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
         <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
@@ -73,16 +73,20 @@
     </div>
     <router-view />
     <div class="container">
+      <div class="inner_container">
       <div v-if="blog">
+        <div class="centre">
         <h1>{{ blog.title }}</h1>
         <img :src="blog.thumbnail_image" alt="" />
+        </div>
         <div class="details" v-html="blog.content_body"></div>
         <div class="btn" @click="back"><h6>CLOSE</h6> 
                 <div class="border"></div>
               </div>
       </div>
       <div v-else>
-        <h2>Lodaing</h2>
+        <div class="preloader"></div>
+      </div>
       </div>
     </div>
   </div>
@@ -103,10 +107,10 @@ export default {
       .catch((err) => console.log(err.message));
   },
   methods: {
-      back() {
-          this.$router.go(-1)
-      }
-  }
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
  
@@ -178,8 +182,8 @@ export default {
   position: relative;
   top: 500px;
   text-align: left;
-  border: 2px solid rgba(0, 0, 0, 0.226);
-  padding: 20px;
+  border: 4px solid rgba(0, 0, 0, 0.226);
+  padding: 10px;
 }
 .container h1 {
   font-size: 2.5em;
@@ -192,6 +196,10 @@ export default {
   font-family: "Montserrat", sans-serif;
   font-family: "Roboto", sans-serif;
 }
+.inner_container {
+  border: 2px solid rgba(0, 0, 0, 0.226);
+  padding: 20px;
+}
 .container img {
   height: 250px;
   width: 250px;
@@ -201,6 +209,10 @@ export default {
   line-height: 20px;
   font-family: "Montserrat", sans-serif;
   font-family: "Roboto", sans-serif;
+}
+.centre {
+  text-align: center;
+  padding-top: 20px;
 }
 .btn {
   background: white;
@@ -213,7 +225,7 @@ export default {
   display: inline-block;
   padding-right: 10px;
 }
-.btn h6{
+.btn h6 {
   position: relative;
   bottom: 15px;
   left: 27px;
@@ -238,5 +250,39 @@ export default {
   background: #ffb535;
   vertical-align: bottom;
   clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+}
+.preloader {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.preloader:before,
+.preloader:after {
+  content: "";
+  position: absolute;
+  top:0;
+  left:0;
+  margin:-8px 0 0 -8px;
+  width:16px;
+  height:16px;
+  background:#3FB8AF;
+  animation:
+    da1-1 2s  infinite,
+    da1-2 .5s infinite;
+}
+.preloader:after {
+  background:#FF3D7F;
+  animation-delay: -1s,0s;
+}
+
+@keyframes da1-1 {
+  0%   {top:0   ;left:0}
+  25%  {top:100%;left:0}
+  50%  {top:100%;left:100%}
+  75%  {top:0   ;left:100%}
+  100% {top:0   ;left:0}
+}
+@keyframes da1-2 {
+   80%,100% {transform: rotate(0.5turn)}
 }
 </style>

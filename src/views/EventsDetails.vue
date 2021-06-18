@@ -1,5 +1,7 @@
 <template>
   <div>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
@@ -64,7 +66,7 @@
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
       <ul>
-        <li><router-link :to="{ name: 'Youtube' }">Youtube</router-link></li>
+        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
         <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
         <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
         <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
@@ -73,16 +75,25 @@
     </div>
     <router-view />
     <div class="container">
-      <div v-if="event">
-        <h1>{{ event.title }}</h1>
-        <img :src="event.event_image" alt="" />
-        <div class="details" v-html="event.description"></div>
-        <div class="btn" @click="back"><h6>CLOSE</h6> 
-                <div class="border"></div>
-              </div>
-      </div>
-      <div v-else>
-        <h2>Lodaing</h2>
+      <div class="inner_container">
+        <div v-if="event">
+          <div class="centre">
+            <h1>{{ event.title }}</h1>
+            <img :src="event.event_image" alt="" />
+          </div>
+          <div class="details">
+          <div v-html="event.description"></div>
+          </div>
+          <div class="centre">
+            <div class="btn" @click="back">
+              <h6>CLOSE</h6>
+              <div class="border"></div>
+            </div>
+          </div>
+        </div>
+        <div v-else>
+          <div class="preloader"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -103,10 +114,10 @@ export default {
       .catch((err) => console.log(err.message));
   },
   methods: {
-      back() {
-          this.$router.go(-1)
-      }
-  }
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
  
@@ -174,12 +185,18 @@ export default {
 }
 .container {
   margin: auto;
-  width: 800px;
+  width: 900px;
   position: relative;
   padding: 10px;
   top: 500px;
+  border: 4px solid rgba(0, 0, 0, 0.226);
   text-align: left;
+  font-family: 'Barlow', sans-serif;
+  color: rgb(0, 0, 0);
+}
+.inner_container {
   border: 2px solid rgba(0, 0, 0, 0.226);
+  padding: 10px;
 }
 .container h1 {
   font-size: 2.5em;
@@ -187,10 +204,10 @@ export default {
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 55px;
-  text-align: centre;
+  position: relative;
+  left: 100px;
   /* font-family: "Roboto", sans-serif; */
-  font-family: "Montserrat", sans-serif;
-  font-family: "Roboto", sans-serif;
+  font-family: "Mate SC", serif;
 }
 .container img {
   height: 250px;
@@ -199,8 +216,12 @@ export default {
 .container details {
   text-align: left;
   line-height: 20px;
-  font-family: "Montserrat", sans-serif;
-  font-family: "Roboto", sans-serif;
+  
+  
+}
+.centre {
+  text-align: center;
+  padding-top: 20px;
 }
 .btn {
   background: white;
@@ -213,7 +234,7 @@ export default {
   display: inline-block;
   padding-right: 10px;
 }
-.btn h6{
+.btn h6 {
   position: relative;
   bottom: 15px;
   left: 27px;
@@ -239,5 +260,38 @@ export default {
   vertical-align: bottom;
   clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
 }
+.preloader {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.preloader:before,
+.preloader:after {
+  content: "";
+  position: absolute;
+  top:0;
+  left:0;
+  margin:-8px 0 0 -8px;
+  width:16px;
+  height:16px;
+  background:#3FB8AF;
+  animation:
+    da1-1 2s  infinite,
+    da1-2 .5s infinite;
+}
+.preloader:after {
+  background:#FF3D7F;
+  animation-delay: -1s,0s;
+}
 
+@keyframes da1-1 {
+  0%   {top:0   ;left:0}
+  25%  {top:100%;left:0}
+  50%  {top:100%;left:100%}
+  75%  {top:0   ;left:100%}
+  100% {top:0   ;left:0}
+}
+@keyframes da1-2 {
+   80%,100% {transform: rotate(0.5turn)}
+}
 </style>
