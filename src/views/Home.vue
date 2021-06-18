@@ -59,7 +59,7 @@
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
       <ul>
-        <li><router-link :to="{ name: 'Youtube' }">Youtube</router-link></li>
+        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
         <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
         <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
         <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
@@ -180,25 +180,6 @@ export default {
 </script>
 
 <style scoped>
-.swipe {
-  height: 100px;
-  width: 1560px;
-  position: relative;
-  bottom: 60px;
-  right: 35px;
-  /* border: 2px solid red; */
-  box-sizing: border-box;
-  /* overflow: hidden; */
-  animation: wave linear 3s 1;
-}
-@keyframes wave {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
 .navbar {
   position: relative;
   color: white;

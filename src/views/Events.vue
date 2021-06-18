@@ -21,6 +21,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <div class="head">
       <svg x="0px" y="0px" viewBox="0 0 1665 800">
         <defs>
@@ -64,7 +69,7 @@
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
       <ul>
-        <li><router-link :to="{ name: 'Youtube' }">Youtube</router-link></li>
+        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
         <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
         <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
         <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
@@ -72,19 +77,45 @@
       </ul>
     </div>
     <router-view />
-    <div class="container" v-for="event in events" :key="event">
-      <img :src="event.event_image" alt="" @click="toggleModal()" />
-      <h3>{{ event.title }}</h3>
-      <!-- <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ipsa neque
-        sapiente! Expedita, aspernatur ducimus commodi velit nemo voluptates
-        aliquam?
-      </p> -->
+    <div class="main">
+      <div class="card" v-for="event in events" :key="event">
+        <div class="card-background">
+          <div class="poster-container">
+            <div class="poster">
+              <img :src="event.event_image" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card-head">
+          <span class="date-box">
+            <span class="date-day">11</span>
+            <span class="date-month">JAN</span>
+          </span>
+        </div>
+
+        <div class="card-title">
+          <div class="details">
+            <h5>{{ event.title }}</h5>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque
+              natus dolorem nihil eius quia molestiae cum
+            </p>
+            <router-link
+              :to="{ name: 'EventsDetails', params: { id: event.id } }"
+            >
+              <div class="btn"><h6>Read More</h6> 
+                <div class="border"></div>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
       <hr />
       <div class="copyright">&copy; Glug NIT Durgapur</div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -150,65 +181,145 @@
   stroke: #1a001a00;
   stroke-width: 0;
 }
-.container {
+.main {
+  padding: 10px;
+}
+.date-box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  border: 4px solid;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+.date-box .date-day {
+  font-size: 22px;
+}
+.card {
   display: inline-block;
+  padding: 30px;
+  width: 300px;
+  height: 300px;
   position: relative;
   top: 400px;
-  width: 520px;
-  height: 300px;
-  margin: 50px;
   /* border: 2px solid red; */
-  border-radius: 10px;
-  /* padding: 20px; */
-  font-size: 18px;
-  box-shadow: 10px 10px 10px 0px grey;
-  font-family: "Roboto", sans-serif;
 }
-.modal {
-  width: 400px;
-  padding: 20px;
-  margin: 100px auto;
-  background: white;
-  border-radius: 10px;
+.card .date-box {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: 300ms ease-in-out;
 }
-.backdrop {
+.card-background {
+  /* border: 2px solid red; */
+  z-index: -1;
+  position: absolute;
   top: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-}
-.container img {
-  float: left;
-  border-radius: 10px 0px 0px 10px;
+  left: 0;
   height: 300px;
-  width: 200px;
-}
-.container h3 {
-  display: block;
-  float: left;
-  padding: 5px;
-  font-family: "Poppins", sans-serif;
-  color: rgba(128, 128, 128, 0.74);
-}
-.container p {
-  /* border: 2px solid red; */
-  line-height: 20px;
-  font-family: "Mate SC", serif;
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-}
-.footer {
   padding: 15px;
-  position: relative;
-  top: 400px;
-  height: 50px;
-  background-color: rgba(0, 0, 0, 0.514);
+  background: rgba(0, 0, 0, 0.116);
+  width: 300px;
 }
-.copyright {
-  float: left;
-  color: white;
-  padding: 2px;
+.poster-container {
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
+  position: relative;
+  overflow: hidden;
+}
+.poster {
+  /* border: 2px solid red; */
+  height: 100%;
+  position: relative;
+  transition: 300ms ease-in-out;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.poster img {
+  height: 200px;
+  width: 300px;
+}
+.card-head {
+  height: 150px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-title {
+  /* border: 2px solid red; */
+  z-index: 10;
+  background: white;
+  padding: 25px 10px 0px 10px;
+  width: 250px;
+  height: 40%;
+  margin-bottom: 5px;
+}
+.details {
+  position: relative;
+  bottom: 30px;
+}
+.details p {
+  font-size: 0.7em;
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+}
+.details h5 {
+  font-size: 0.9em;
+  color: rgba(128, 128, 128, 0.76);
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  text-align: left;
+}
+.card:hover .card-title h5 {
+  color: #ffb535;
+}
+.card:hover .poster {
+  transform: scale(1.2) rotate(5deg);
+}
+.card:hover .date-box {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn {
+  background: white;
+  color: #000;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  font-size: 1em;
+  height: 30px;
+  width: 80px;
+  display: inline-block;
+  padding-right: 10px;
+}
+.btn h6{
+  position: relative;
+  bottom: 15px;
+  left: 10px;
+  z-index: 9;
+}
+.btn:hover {
+  transform: scale(1.1);
+}
+.btn {
+  text-decoration: none;
+}
+
+.border {
+  height: 50px;
+  position: relative;
+  bottom: 80px;
+  right: 20px;
+  width: 50px;
+  display: inline-block;
+  /* border: 2px solid red; */
+  background: #ffb535;
+  vertical-align: bottom;
+  clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
 }
 </style>
 
@@ -217,19 +328,13 @@ export default {
   data() {
     return {
       events: [],
-      showModal: false,
     };
   },
   mounted() {
-    fetch("https://api.nitdgplug.org/api/upcoming-events/")
+    fetch(process.env.VUE_APP_EVENTS)
       .then((res) => res.json())
       .then((data) => (this.events = data))
       .catch((err) => console.log(err.message));
-  },
-  methods: {
-    toggleModal() {
-      this.showModal = !this.showModal;
-    },
   },
 };
 </script>

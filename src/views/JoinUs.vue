@@ -21,6 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Roboto&display=swap"
       rel="stylesheet"
     />
+
     <div class="head">
       <svg x="0px" y="0px" viewBox="0 0 1665 800">
         <defs>
@@ -64,7 +65,7 @@
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
       <ul>
-        <li><router-link :to="{ name: 'Youtube' }">Youtube</router-link></li>
+        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
         <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
         <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
         <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
@@ -72,44 +73,9 @@
       </ul>
     </div>
     <router-view />
-    <div class="container">
-      <div v-if="blog">
-        <h1>{{ blog.title }}</h1>
-        <img :src="blog.thumbnail_image" alt="" />
-        <div class="details" v-html="blog.content_body"></div>
-        <div class="btn" @click="back"><h6>CLOSE</h6> 
-                <div class="border"></div>
-              </div>
-      </div>
-      <div v-else>
-        <h2>Lodaing</h2>
-      </div>
-    </div>
-  </div>
+ </div>
 </template>
 
- <script>
-export default {
-  props: ["id"],
-  data() {
-    return {
-      blog: null,
-    };
-  },
-  mounted() {
-    fetch(process.env.VUE_APP_BLOGS + this.id)
-      .then((res) => res.json())
-      .then((data) => (this.blog = data))
-      .catch((err) => console.log(err.message));
-  },
-  methods: {
-      back() {
-          this.$router.go(-1)
-      }
-  }
-};
-</script>
- 
 <style scoped>
 .navbar {
   position: relative;
@@ -171,72 +137,5 @@ export default {
   fill: url(#grad);
   stroke: #1a001a00;
   stroke-width: 0;
-}
-.container {
-  margin: auto;
-  width: 800px;
-  position: relative;
-  top: 500px;
-  text-align: left;
-  border: 2px solid rgba(0, 0, 0, 0.226);
-  padding: 20px;
-}
-.container h1 {
-  font-size: 2.5em;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 55px;
-  text-align: centre;
-  /* font-family: "Roboto", sans-serif; */
-  font-family: "Montserrat", sans-serif;
-  font-family: "Roboto", sans-serif;
-}
-.container img {
-  height: 250px;
-  width: 250px;
-}
-.container details {
-  text-align: left;
-  line-height: 20px;
-  font-family: "Montserrat", sans-serif;
-  font-family: "Roboto", sans-serif;
-}
-.btn {
-  background: white;
-  color: #000;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  font-size: 1em;
-  height: 30px;
-  width: 80px;
-  display: inline-block;
-  padding-right: 10px;
-}
-.btn h6{
-  position: relative;
-  bottom: 15px;
-  left: 27px;
-  z-index: 9;
-}
-.btn:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-.btn {
-  text-decoration: none;
-}
-
-.border {
-  height: 50px;
-  position: relative;
-  bottom: 80px;
-  right: 20px;
-  width: 50px;
-  display: inline-block;
-  /* border: 2px solid red; */
-  background: #ffb535;
-  vertical-align: bottom;
-  clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
 }
 </style>

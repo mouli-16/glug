@@ -59,7 +59,7 @@
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
       <ul>
-        <li><router-link :to="{ name: 'Youtube' }">Youtube</router-link></li>
+        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
         <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
         <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
         <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
@@ -136,13 +136,16 @@ export default {
     };
   },
   mounted() {
-    fetch("https://api.nitdgplug.org/api/profiles/")
+    fetch(process.env.VUE_APP_PROFILES)
       .then((res) => res.json())
       .then((data) => (this.members = data))
       .catch((err) => console.log(err.message));
+    
   },
 };
+
 </script>
+
  
 <style scoped>
 .navbar {
@@ -284,6 +287,7 @@ export default {
   top: 50px;
   left: 60px;
   height: 100px;
+  object-fit: contain;
   width: 100px;
   /* border: 2px solid red; */
   z-index: 999;

@@ -73,10 +73,10 @@
     </div>
     <router-view />
     <div class="container">
-      <div v-if="blog">
-        <h1>{{ blog.title }}</h1>
-        <img :src="blog.thumbnail_image" alt="" />
-        <div class="details" v-html="blog.content_body"></div>
+      <div v-if="event">
+        <h1>{{ event.title }}</h1>
+        <img :src="event.event_image" alt="" />
+        <div class="details" v-html="event.description"></div>
         <div class="btn" @click="back"><h6>CLOSE</h6> 
                 <div class="border"></div>
               </div>
@@ -93,13 +93,13 @@ export default {
   props: ["id"],
   data() {
     return {
-      blog: null,
+      event: null,
     };
   },
   mounted() {
-    fetch(process.env.VUE_APP_BLOGS + this.id)
+    fetch(process.env.VUE_APP_EVENTS + this.id)
       .then((res) => res.json())
-      .then((data) => (this.blog = data))
+      .then((data) => (this.event = data))
       .catch((err) => console.log(err.message));
   },
   methods: {
@@ -176,10 +176,10 @@ export default {
   margin: auto;
   width: 800px;
   position: relative;
+  padding: 10px;
   top: 500px;
   text-align: left;
   border: 2px solid rgba(0, 0, 0, 0.226);
-  padding: 20px;
 }
 .container h1 {
   font-size: 2.5em;
@@ -239,4 +239,5 @@ export default {
   vertical-align: bottom;
   clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
 }
+
 </style>

@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Events from '../views/Events.vue'
+import EventsDetails from '../views/EventsDetails.vue'
 import Blogs from '../views/Blogs.vue'
 import BlogsDetails from '../views/BlogsDetails.vue'
 import Members from '../views/Members.vue'
-import Youtube from '../views/Youtube.vue'
+import JoinUs from '../views/JoinUs.vue'
 
 const routes = [
   {
@@ -16,6 +17,12 @@ const routes = [
     path: '/events',
     name: 'Events',
     component: Events
+  },
+  {
+    path: '/events/:id',
+    name: 'EventsDetails',
+    component: EventsDetails,
+    props: true
   },
   {
     path: '/blogs',
@@ -34,10 +41,11 @@ const routes = [
     component: Members
   },
   {
-    path: '/youtube',
-    name: 'Youtube',
-    component: Youtube
+    path: '/join_us',
+    name: 'JoinUs',
+    component: JoinUs
   },
+
 ]
 
 const router = createRouter({

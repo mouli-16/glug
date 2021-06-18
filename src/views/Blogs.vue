@@ -65,7 +65,7 @@
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
       <ul>
-        <li><router-link :to="{ name: 'Youtube' }">Youtube</router-link></li>
+        <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
         <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
         <li><router-link :to="{ name: 'Blogs' }">Blogs</router-link></li>
         <li><router-link :to="{ name: 'Events' }">Events</router-link></li>
@@ -74,28 +74,36 @@
     </div>
     <router-view />
     <div class="container">
-      <!-- <h1>OUR BLOGS</h1> -->
-      <div class="content" v-for="blog in blogs" :key="blog">
-        <h2>{{ blog.title }}</h2>
-        <h5>
-          Published on , by <span>{{ blog.author_name }}</span>
-        </h5>
-        <img :src="blog.thumbnail_image" alt="" />
-        <h4>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-          voluptates ducimus aperiam dolorem ad labore quibusdam dolor
-          necessitatibus velit voluptatum, dolorum voluptatibus iste iusto autem
-          adipisci eos dicta. Repellendus laudantium ducimus explicabo
-          repudiandae dolore possimus voluptates quasi quod placeat autem
-          distinctio, obcaecati commodi alias. Beatae earum impedit quod
-          corporis, neque eligendi quia ducimus dolorem dolorum voluptatibus
-          iste iusto autem adipisci eos dicta. Repellendus laudantium ducimus
-          explicabo 
-        <router-link :to="{ name:'BlogsDetails',params :{id:blog.id} } ">
-                  <span>Read More</span>
-          </router-link>
-        </h4>
-        <hr>
+      <div class="card" v-for="blog in blogs" :key="blog">
+        <div class="card_left">
+          <img :src="blog.thumbnail_image" alt="" />
+          <div class="date_box">
+            <div class="date">12</div>
+            <div class="month">JANUARY</div>
+          </div>
+        </div>
+        <div class="symbols">
+          <a href=""><img  src="../assets/like.png" alt="" /> </a>
+          <a href=""><img src="../assets/share.png" alt="" /> </a>
+          <a href=""><img src="../assets/comment.png" alt="" /> </a>
+        </div>
+        <div class="card_info">
+          <div class="card_head">
+            <h3>{{blog.title}} </h3>
+            <h5>{{blog.author_name}} </h5>
+            <hr>
+          </div>
+          <div class="card_details">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, qui.
+          </div>
+        </div>
+         <router-link
+              :to="{ name: 'BlogsDetails', params: { id: blog.id } }"
+            >
+              <div class="btn"><h6>Read More</h6> 
+                <div class="border"></div>
+              </div>
+            </router-link>
       </div>
     </div>
   </div>
@@ -164,62 +172,123 @@
   stroke-width: 0;
 }
 .container {
-  justify-content: center;
   position: relative;
-  top: 400px;
-  display: block;
-  width: 900px;
-  margin: auto;
-  font-family: "Roboto", sans-serif;
-  /* border: 2px solid red; */
+  top: 500px;
+  
 }
-/* .container h1 {
-  font-size: 2.5em;
+.card {
+  background-color: rgba(128, 128, 128, 0.425);
+  height: 300px;
+  width: 550px;
+  display: inline-block;
+  margin: 20px;
+}
+.card img {
+  height: 200px;
+  width: 330px;
   position: relative;
-  left: 80px;
+  bottom: 20px;
+  right: 95px;
+}
+.date_box {
+  position: relative;
+  /* bottom: 20px; */
+  right: 160px;
+  font-size: 1.8em;
+}
+.date_box .date{
+  font-size: 2em;
+}
+.date_box .month{
+  font-family: "Roboto", sans-serif;
+  font-size: .8em;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 10px;
-  line-height: 55px;
-} */
-.container h2 {
-  font-family: "Montserrat", sans-serif;
-  font-family: "Roboto", sans-serif;
+}
+.symbols img {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  margin: 12px;
+  left: 20px;
+  bottom: 35px;
+}
+
+.card_info{
+  position: relative;
+  bottom: 370px;
+  left: 350px;
+  width: 160px;
+  text-align: left;
+  padding: 10px;
+  padding-top: 25px;
+  /* border: 2px solid red; */
+}
+.more img{
+  height: 50px;
+  width: 50px;
+   
+}
+.card_head h5{
+  position: relative;
+  bottom: 10px;
+  color: #ffd40d;
+}
+.card h3{
+  font-size: 20px;
+  font-family: "Mate SC", serif;
   text-transform: uppercase;
-  text-align: left;
-  font-size: 2em;
-  line-height: 10px;
 }
-.container h5{
-  font-family: "Mate SC", serif;
-  font-family: "Roboto", sans-serif;
-  color: grey;  
-  text-align: left;
+.card hr{
+  color: black;
+  position: relative;
+  bottom: 20px;
 }
-.content{
-    position: relative;
-    top: 100px;
-    margin: 40px;
+.card_details{
+  position: relative;
+  bottom: 20px;
 }
-.content img {
-  height: 200px;
-  padding: 0px 10px 10px 10px;
-  width: 200px;
-  float: left;
-  display: block;
-}
-.content h4 {
+.btn {
+  background: white;
+  color: #000;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
   font-size: 1em;
-  text-align: left;
-  line-height: 25px;
-  font-family: "Mate SC", serif;
-  font-family: "Roboto", sans-serif;
+  height: 30px;
+  width: 80px;
+  display: inline-block;
+  padding-right: 10px;
+  position: relative;
+  bottom: 330px;
+  left: 200px;
 }
-.content span{
-    color: #a13fe8ab;
-    text-decoration: none;
-    text-transform: uppercase;
+.btn h6{
+  position: relative;
+  bottom: 15px;
+  left: 10px;
+  z-index: 9;
 }
+.btn:hover {
+  transform: scale(1.1);
+}
+.btn {
+  text-decoration: none;
+}
+
+.border {
+  height: 50px;
+  position: relative;
+  bottom: 80px;
+  right: 20px;
+  width: 50px;
+  display: inline-block;
+  /* border: 2px solid red; */
+  background: #ffb535;
+  vertical-align: bottom;
+  clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+}
+
 </style>
 
 <script>
@@ -227,19 +296,18 @@ export default {
   data() {
     return {
       blogs: [],
-      
     };
   },
   mounted() {
-    fetch("https://api.nitdgplug.org/blog/posts/")
+    fetch(process.env.VUE_APP_BLOGS)
       .then((res) => res.json())
       .then((data) => (this.blogs = data))
       .catch((err) => console.log(err.message));
   },
   methods: {
-      formatDate(date) {
-        return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    formatDate(date) {
+      return moment(date).format("MMMM Do YYYY, h:mm:ss a");
     },
-  }
+  },
 };
 </script>
