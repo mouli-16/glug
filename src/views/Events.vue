@@ -222,6 +222,7 @@
 .slider li {
   font-size: 0.8em;
   margin: 10px;
+  color: #000;
 }
 .col {
   padding: 10px;

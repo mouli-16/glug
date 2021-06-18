@@ -370,6 +370,7 @@ export default {
 .slider li {
   font-size: 0.8em;
   margin: 10px;
+  color: #000;
 }
 .cards {
   display: inline-block;

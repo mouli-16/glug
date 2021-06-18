@@ -227,6 +227,7 @@ template{
 .slider li {
   font-size: 0.8em;
   margin: 10px;
+  color: #000;
 }
 form{
     max-width: 550px;
