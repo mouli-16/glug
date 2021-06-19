@@ -224,8 +224,14 @@
   margin: 10px;
   color: #000;
 }
+.slider a{
+  color: #000;
+}
 .col {
   padding: 10px;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-column-gap: 150px;
 }
 .date-box {
   position: absolute;
@@ -242,7 +248,6 @@
   font-size: 22px;
 }
 .card {
-  display: inline-block;
   padding: 30px;
   width: 300px;
   height: 300px;
@@ -378,6 +383,10 @@
   .col {
     position: relative;
     bottom: 350px;
+    display: inline-block;
+  }
+  .card-background{
+    width: 280px;
   }
   .contact {
     position: relative;
@@ -390,6 +399,7 @@
     display: block;
     position: relative;
     float: right;
+    right: 30px;
     bottom: 30px;
     height: 50px;
     width: 50px;

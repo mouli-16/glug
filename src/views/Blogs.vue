@@ -186,9 +186,9 @@
   stroke: #1a001a00;
   stroke-width: 0;
 }
-/* .hamburger img {
+.hamburger img {
   display: none;
-} */
+}
 .hamburger:hover {
   cursor: pointer;
 }
@@ -214,19 +214,20 @@
 .slider a{
   color: #000;
 }
-.text{
-  color: #000;
-}
 .container {
   position: relative;
   top: 500px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 200px;
+  grid-row-gap: 50px;
 }
 .card {
-  background-color: rgba(128, 128, 128, 0.425);
-  height: 300px;
+  background-color: rgba(128, 128, 128, 0.219);
+  height: 350px;
   width: 550px;
-  display: inline-block;
   margin: 20px;
+  box-shadow: 10px 10px 10px 0px grey;
 }
 .card img {
   height: 200px;
@@ -346,15 +347,17 @@
   .container {
     position: relative;
     top: 100px;
+    display: block;
+    margin: 10px;
   }
   .card {
     width: 300px;
     height: 250px;
+    
   }
   .card img {
     width: 150px;
     position: relative;
-    bottom: 20px;
     right: 60px;
   }
   .date_box {

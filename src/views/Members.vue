@@ -276,6 +276,9 @@ export default {
   margin: 10px;
   color: #000;
 }
+.slider a{
+  color: #000;
+}
 .content {
   float: left;
   /* border: 2px solid red; */

@@ -229,6 +229,9 @@ template{
   margin: 10px;
   color: #000;
 }
+.slider a{
+  color: #000;
+}
 form{
     max-width: 550px;
     margin: 30px auto;
