@@ -256,12 +256,16 @@ export default {
   cursor: pointer;
 }
 .slider {
+  background: rgba(128, 128, 128, 0.199);
   color: #000;
   text-align: center;
   /* border: 2px solid red; */
-  width: 100px;
+  width: 120px;
+  position: relative;
+  left: 50px;
   float: right;
   animation: slide linear 3s 1;
+  border-radius: 4px;
 }
 @keyframes wave {
   0% {

@@ -478,6 +478,7 @@ export default {
     position: relative;
     top: 30px;
     left: 20px;
+    z-index: -999;
   }
   .col {
     position: relative;

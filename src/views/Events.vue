@@ -128,10 +128,39 @@
         </div>
       </div>
     </div>
-    <!-- <div class="footer">
-      <hr />
-      <div class="copyright">&copy; Glug NIT Durgapur</div>
-    </div> -->
+     <div class="footer">
+        <div class="contact">
+          <img src="../assets/tel.png" alt="" />
+          <h4>+91-9674345229</h4>
+          <img src="../assets/email.png" alt="" />
+          <h4>sikoerhbgi@gmail.com</h4>
+          <img src="../assets/locate.png" alt="" />
+          <h4>Durgapur WestBengal,743721</h4>
+        </div>
+        <hr />
+        <div class="copyright">&copy; Glug NIT Durgapur</div>
+        <div class="links">
+          <a
+            href="https://www.linkedin.com/company/lugnitdgp/mycompany/"
+            target="_blank"
+            ><img src="../assets/lim3.png" alt=""
+          /></a>
+          <a href="https://github.com/lugnitdgp" target="_blank"
+            ><img src="../assets/gitm1.png" alt=""
+          /></a>
+          <a href="https://www.instagram.com/nitdgplug/" target="_blank"
+            ><img src="../assets/insf.png" alt=""
+          /></a>
+          <a href="https://www.facebook.com/nitdgplug" target="_blank"
+            ><img src="../assets/io.png" alt=""
+          /></a>
+          <a
+            href="https://www.youtube.com/channel/UCYZPnN5vP5B1sINLLkI1aDA"
+            target="_blank"
+            ><img src="../assets/yt.png" alt=""
+          /></a>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -204,12 +233,16 @@
   cursor: pointer;
 }
 .slider {
+  background: rgba(128, 128, 128, 0.199);
   color: #000;
   text-align: center;
   /* border: 2px solid red; */
-  width: 100px;
+  width: 120px;
+  position: relative;
+  left: 50px;
   float: right;
   animation: slide linear 3s 1;
+  border-radius: 4px;
 }
 @keyframes wave {
   0% {
@@ -369,6 +402,54 @@
   vertical-align: bottom;
   clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
 }
+.footer {
+  padding: 15px;
+  position: relative;
+  top: 500px;
+  height: 180px;
+  background-color: rgba(0, 0, 0, 0.514);
+}
+.contact {
+  text-align: left;
+}
+
+.contact h4 {
+  position: relative;
+  /* top: 590px; */
+  /* display: block; */
+  bottom: 10px;
+  left: 130px;
+  margin: 2px;
+  color: white;
+  font-family: "Mate SC", serif;
+  font-family: "Roboto", sans-serif;
+}
+.contact img {
+  position: relative;
+  top: 15px;
+  display: block;
+  left: 60px;
+  margin: -20px;
+  height: 60px;
+  width: 60px;
+}
+.copyright {
+  float: left;
+  color: white;
+  padding: 2px;
+}
+.links {
+  float: right;
+}
+.links img {
+  margin: 5px;
+  height: 20px;
+  width: 20px;
+}
+.links img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 @media only screen and (max-width: 607px) {
   #GNU {
     position: relative;
@@ -382,8 +463,13 @@
   }
   .col {
     position: relative;
-    bottom: 350px;
+    top: 30px;
+    height: 10px;
     display: inline-block;
+  }
+  .card{
+    position: relative;
+    top: 1px;
   }
   .card-background{
     width: 280px;
