@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
@@ -308,6 +308,12 @@ export default {
   opacity: 0.8;
   cursor: pointer;
 }
+#git:visited,
+#insta:visited,
+#li:visited,
+#fb:visited {
+  opacity: 1;
+}
 #insta {
   position: relative;
   top: 120px;
@@ -464,6 +470,9 @@ export default {
   .content p {
     font-size: 0.8em;
   }
+  .main{
+    z-index: 9999;
+  }
   #GNU {
     position: relative;
     top: 20px;
@@ -483,6 +492,7 @@ export default {
   .col {
     position: relative;
     bottom: 350px;
+    z-index: -9999;
   }
   .social {
     position: relative;
@@ -503,6 +513,9 @@ export default {
     bottom: 30px;
     height: 50px;
     width: 50px;
+  }
+  .cards{
+    z-index: -9999;
   }
 }
 </style>

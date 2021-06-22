@@ -435,11 +435,13 @@
     top: 300px;
     display: block;
     margin: 10px;
+    
     z-index: -999;
   }
   .card {
     width: 300px;
     height: 250px;
+    margin-bottom: 100px;
     
   }
   .card img {

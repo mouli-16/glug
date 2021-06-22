@@ -68,7 +68,7 @@
         <div id="GNU">GNU</div>
         <div id="Lug">LINUX USERS' GROUP</div>
       </div>
-     <div class="routes">
+      <div class="routes">
         <ul>
           <li><router-link :to="{ name: 'JoinUs' }">Join Us</router-link></li>
           <li><router-link :to="{ name: 'Members' }">Members</router-link></li>
@@ -103,24 +103,22 @@
           </div>
         </div>
 
-        <div class="card-head">
+        <div class="card-head" @mouseover="changeDate(event.event_timing)">
           <span class="date-box">
-            <span class="date-day">11 </span>
-            <span class="date-month">JAN</span>
+            <span class="date-day">{{ Day }} </span>
+            <span class="date-month">{{ Months[Month_No] }} </span>
           </span>
         </div>
 
         <div class="card-title">
           <div class="details">
             <h5>{{ event.title }}</h5>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque
-              natus dolorem nihil eius quia molestiae cum
-            </p>
+            <div class="p">{{cropStr(event.description)}} </div>
             <router-link
               :to="{ name: 'EventsDetails', params: { id: event.id } }"
             >
-              <div class="btn"><h6>Read More</h6> 
+              <div class="btn">
+                <h6>Read More</h6>
                 <div class="border"></div>
               </div>
             </router-link>
@@ -128,38 +126,38 @@
         </div>
       </div>
     </div>
-     <div class="footer">
-        <div class="contact">
-          <img src="../assets/tel.png" alt="" />
-          <h4>+91-9674345229</h4>
-          <img src="../assets/email.png" alt="" />
-          <h4>sikoerhbgi@gmail.com</h4>
-          <img src="../assets/locate.png" alt="" />
-          <h4>Durgapur WestBengal,743721</h4>
-        </div>
-        <hr />
-        <div class="copyright">&copy; Glug NIT Durgapur</div>
-        <div class="links">
-          <a
-            href="https://www.linkedin.com/company/lugnitdgp/mycompany/"
-            target="_blank"
-            ><img src="../assets/lim3.png" alt=""
-          /></a>
-          <a href="https://github.com/lugnitdgp" target="_blank"
-            ><img src="../assets/gitm1.png" alt=""
-          /></a>
-          <a href="https://www.instagram.com/nitdgplug/" target="_blank"
-            ><img src="../assets/insf.png" alt=""
-          /></a>
-          <a href="https://www.facebook.com/nitdgplug" target="_blank"
-            ><img src="../assets/io.png" alt=""
-          /></a>
-          <a
-            href="https://www.youtube.com/channel/UCYZPnN5vP5B1sINLLkI1aDA"
-            target="_blank"
-            ><img src="../assets/yt.png" alt=""
-          /></a>
-        </div>
+    <div class="footer">
+      <div class="contact">
+        <img src="../assets/tel.png" alt="" />
+        <h4>+91-9674345229</h4>
+        <img src="../assets/email.png" alt="" />
+        <h4>sikoerhbgi@gmail.com</h4>
+        <img src="../assets/locate.png" alt="" />
+        <h4>Durgapur WestBengal,743721</h4>
+      </div>
+      <hr />
+      <div class="copyright">&copy; Glug NIT Durgapur</div>
+      <div class="links">
+        <a
+          href="https://www.linkedin.com/company/lugnitdgp/mycompany/"
+          target="_blank"
+          ><img src="../assets/lim3.png" alt=""
+        /></a>
+        <a href="https://github.com/lugnitdgp" target="_blank"
+          ><img src="../assets/gitm1.png" alt=""
+        /></a>
+        <a href="https://www.instagram.com/nitdgplug/" target="_blank"
+          ><img src="../assets/insf.png" alt=""
+        /></a>
+        <a href="https://www.facebook.com/nitdgplug" target="_blank"
+          ><img src="../assets/io.png" alt=""
+        /></a>
+        <a
+          href="https://www.youtube.com/channel/UCYZPnN5vP5B1sINLLkI1aDA"
+          target="_blank"
+          ><img src="../assets/yt.png" alt=""
+        /></a>
+      </div>
     </div>
   </div>
 </template>
@@ -257,7 +255,7 @@
   margin: 10px;
   color: #000;
 }
-.slider a{
+.slider a {
   color: #000;
 }
 .col {
@@ -342,10 +340,10 @@
   position: relative;
   bottom: 30px;
 }
-.details p {
+ .p {
   font-size: 0.7em;
   text-align: left;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #000;
 }
 .details h5 {
@@ -377,7 +375,7 @@
   display: inline-block;
   padding-right: 10px;
 }
-.btn h6{
+.btn h6 {
   position: relative;
   bottom: 15px;
   left: 10px;
@@ -467,11 +465,11 @@
     height: 10px;
     display: inline-block;
   }
-  .card{
+  .card {
     position: relative;
     top: 1px;
   }
-  .card-background{
+  .card-background {
     width: 280px;
   }
   .contact {
@@ -491,8 +489,6 @@
     width: 50px;
   }
 }
-
-
 </style>
 
 <script>
@@ -500,20 +496,45 @@ export default {
   data() {
     return {
       events: [],
+      Months: [
+        "JANUARY",
+        "FEBRUARY",
+        "MARCH",
+        "APRIL",
+        "MAY",
+        "JUNE",
+        "JULY",
+        "AUGUST",
+        "SEPTEMBER",
+        "OCTOBER",
+        "NOVEMBER",
+        "DECEMBER",
+      ],
       showSlider: false,
+      Day: "",
+      Month_No: "",
+      timeStamp: "",
+      shortDesc: ""
     };
   },
   methods: {
     toggleSlider() {
       this.showSlider = !this.showSlider;
     },
+    changeDate(api_date) {
+      this.timeStamp = new Date(api_date).getTime();
+      this.Day = new Date(this.timeStamp).getDate();
+      this.Month_No = new Date(this.timeStamp).getMonth();
+    },
+    cropStr(text){
+      return text.substr(0,60)
+    }
   },
   mounted() {
     fetch(process.env.VUE_APP_EVENTS)
       .then((res) => res.json())
       .then((data) => (this.events = data))
       .catch((err) => console.log(err.message));
-
   },
 };
 </script>

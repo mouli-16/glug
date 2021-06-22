@@ -396,19 +396,19 @@ export default {
   cursor: pointer;
   transform: scale(1.1);
 }
-@media only screen and (max-width: 607px) {
+@media only screen and (max-width: 414px) {
   .content {
     position: relative;
     top: 10px;
     width: 350px;
-    left: 10px;
+    left: 5px;
     padding: 10px;
   }
   .content h1 {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
   .content p {
-    font-size: 0.9em;
+    font-size: 0.7em;
   }
   #GNU {
     position: relative;
